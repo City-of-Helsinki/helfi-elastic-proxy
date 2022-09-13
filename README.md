@@ -11,7 +11,7 @@ foo@bar:~$ npm run dev
 
 If your Elastic is not running in localhost:9200, you may set the url with `ELASTIC_URL` env variable.
 
-If you wish for this application to run in a port ohther than `3000`, you may set the port with `PORT `env variable.
+If you wish for this application to run in a port other than `3000`, you may set the port with `PORT `env variable.
 
 ### How it works
 This application proxies requests from a frontend application to Elasticsearch backend. In this manner we don't need to make Elastic server publicly accessible.

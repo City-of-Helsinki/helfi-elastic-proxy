@@ -5,12 +5,16 @@ const app = express();
 app.use(cors());
 
 const port = Number(process.env.PORT || 8080);
-const apiServerHost = (process.env.ELASTIC_URL || 'http://127.0.0.1:9200')
+const apiServerHost = (process.env.ELASTICSEARCH_URL || 'http://127.0.0.1:9200');
+const user = process.env.ELASTIC_USER;
+const password = process.env.ELASTIC_PASSWORD;
+const auth = 'Basic ' + new Buffer.from(`${user}:${password}`).toString('base64');
 
 const pipeRequest = (req, res) => {
 	req.pipe(request({
-		uri  : apiServerHost + req.url,
+		url: apiServerHost + req.url,
 		headers: {
+			'Authorization': auth,
 			'accept-encoding': 'none'
 		},
 		rejectUnauthorized: false,
