@@ -6,8 +6,8 @@ ENV npm_config_cache=/app/.npm
 ENV APP_NAME paatokset-elasticproxy
 COPY package*.json ./
 RUN npm install && npm cache clean --force  
-RUN chown -R :0 /app/.npm
 COPY . .
+RUN chown -R :0 "/app/.npm"
 
 EXPOSE 8080
 
